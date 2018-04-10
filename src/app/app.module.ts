@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { ImageUploadModule } from "angular2-image-upload";
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -25,7 +27,8 @@ import { AddComponent } from './add/add.component';
           { path: 'home', component: HomeComponent},
           { path: 'contact', component: ContactComponent},
           { path: 'add', component: AddComponent}
-      ])
+      ]),
+    ImageUploadModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
