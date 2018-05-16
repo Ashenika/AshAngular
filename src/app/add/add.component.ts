@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {StudentService} from "../sevices/student.service";
+import {Student} from '../student';
 
 declare var  $:any;
 
@@ -9,13 +12,18 @@ declare var  $:any;
 })
 export class AddComponent implements OnInit {
 
-  public file_src:string = 'assets/images/profile.png';
+  public file_src: string = 'assets/images/profile.png';
 
 
-  constructor() { }
+  constructor(private router: Router, private StudentService: StudentService) {
+
+
+  }
 
   ngOnInit() {
   }
+
+  model = new Student()
 
   imageUploaded(file: any){
     $('img').hide();
@@ -24,5 +32,10 @@ export class AddComponent implements OnInit {
   imageRemoved(file: any){
     $('img').show();
   }
+
+  addStudent(){
+    this.StudentService.addStudent(this.model).subscribe(response => {console.log(response);})
+  }
   
 }
+

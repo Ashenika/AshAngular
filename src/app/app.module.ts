@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { ImageUploadModule } from "angular2-image-upload";
+import { ImageUploadModule } from 'angular2-image-upload';
 
+import { StudentService} from './sevices/student.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -30,7 +31,7 @@ import { AddComponent } from './add/add.component';
       ]),
     ImageUploadModule.forRoot()
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
