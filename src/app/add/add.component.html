@@ -5,7 +5,7 @@
       <h2 class="form-signin-heading">Add a New</h2>
     </div>
       <div class="panel-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" #addStudentForm="ngForm" (submit)="addStudent()">
 
           <div class="col-md-4">
             <!--user can only upload one picture -->
@@ -28,16 +28,34 @@
               <div class="form-group">
                 <label for="fullname" class="col-sm-4 control-label"> Full Name :</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" name="fullname" required maxlength="30">
+                  <input type="text" class="form-control" name="fullname" required maxlength="30" [(ngModel)]="model.fullname" #fullname="ngModel">
                 </div>
+                <br>
+                <br>
+                <div *ngIf="fullname.errors && (fullname.dirty || fullname.touched)" class="alert alert-danger">
+
+                  <div [hidden] = "!fullname.errors.required">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> Fullname is Required
+                </div>
+
               </div>
+          </div>
           </div>
 
           <div class="col-md-8">
             <div class="form-group">
               <label for="age" class="col-sm-4 control-label"> Age :</label>
               <div class="col-sm-8">
-                <input type="number" class="form-control" name="age" required min="1" max="100">
+                <input type="number" class="form-control" name="age" required min="1" max="100" [(ngModel)]="model.age" #age="ngModel">
+              </div>
+              <br>
+              <br>
+              <div *ngIf="age.errors && (age.dirty || age.touched)" class="alert alert-danger">
+
+                <div [hidden] = "!age.errors.required">
+                  <span class="glyphicon glyphicon-exclamation-sign"></span> Age is Required
+                </div>
+
               </div>
             </div>
           </div>
@@ -46,7 +64,16 @@
             <div class="form-group">
               <label for="course" class="col-sm-4 control-label"> Course :</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="course" required maxlength="100">
+                <input type="text" class="form-control" name="course" required maxlength="100" [(ngModel)]="model.course" #course="ngModel">
+              </div>
+              <br>
+              <br>
+              <div *ngIf="course.errors && (course.dirty || course.touched)" class="alert alert-danger">
+
+                <div [hidden] = "!course.errors.required">
+                  <span class="glyphicon glyphicon-exclamation-sign"></span> Course is Required
+                </div>
+
               </div>
             </div>
           </div>
@@ -54,7 +81,7 @@
           <div class="col-md-8">
             <div class="form-group">
             <div class="col-sm-offset-4">
-            <button type="submit" class="btn btn-success" style="font-size: 1.5rem"> SAVE </button>
+            <button type="submit" class="btn btn-success" style="font-size: 1.5rem" [disabled]="!addStudentForm.form.valid"> SAVE </button>
             <a class="btn btn-info" style="font-size: 1.5rem ; color : white" > CANCEL </a>
             </div>
           </div>

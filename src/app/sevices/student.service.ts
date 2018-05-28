@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class StudentService {
 
   // Local LARAVEL server
-  server = 'http://student/';
+  server = 'localhost:4200/';
 
   header: Headers = new Headers;
   options: any;
@@ -16,5 +16,11 @@ export class StudentService {
       this.header.append('Content-Type','application/json');
       this.header.append('X-Requested-With', 'XMLHttpRequest');
       this.options = new RequestOptions({ headers: this.header});
+  }
+
+  addStudent(info){
+        var data = JSON.stringify(info);
+
+        return this.http.post(this.server+"addstudent",data,this.options).map(res => res.json());
   }
 }

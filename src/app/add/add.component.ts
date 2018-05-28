@@ -34,7 +34,7 @@ export class AddComponent implements OnInit {
   }
 
   addStudent(){
-    this.StudentService.addStudent(this.model).subscribe(response => {console.log(response);})
+   this.StudentService.addStudent(this.model).subscribe(response => {console.log(response);})
   }
   
 }
