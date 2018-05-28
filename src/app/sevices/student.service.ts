@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class StudentService {
 
   // Local LARAVEL server
-  server = 'localhost:4200/';
+  server = 'http://localhost/AshAngularBackEnd/public/';
 
   header: Headers = new Headers;
   options: any;
@@ -21,6 +21,6 @@ export class StudentService {
   addStudent(info){
         var data = JSON.stringify(info);
 
-        return this.http.post(this.server+"addstudent",data,this.options).map(res => res.json());
+      return this.http.post(this.server+ "add",data,this.options).map(res => res.json());
   }
 }

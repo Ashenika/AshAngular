@@ -27,6 +27,7 @@ export class AddComponent implements OnInit {
 
   imageUploaded(file: any){
     $('img').hide();
+    this.model.photo = this.file_src;
   }
   
   imageRemoved(file: any){
